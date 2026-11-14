@@ -1,0 +1,6 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+[data-theme=light] body{background:#f4f4f5!important;color:#18181b!important}
+[data-theme=light] .bg-zinc-900{background:#fff}[data-theme=light] .bg-zinc-800,[data-theme=light] .bg-zinc-800\/60{background:#e4e4e7}
+[data-theme=light] .border-zinc-800,[data-theme=light] .border-zinc-700{border-color:#d4d4d8}
+[data-theme=light] .text-zinc-100{color:#18181b}[data-theme=light] .text-zinc-400,[data-theme=light] .text-zinc-500{color:#52525b}
