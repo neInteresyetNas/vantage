@@ -14,4 +14,4 @@ npm run build && npm start   # production
 `npm install` runs `scripts/fetch-camos.mjs`, which downloads camo icons, Gold/Platinum/Harmonic Break/Divergence art and weapon thumbnails from assets.codmunity.gg into `public/` for personal local use (needs internet; `npm run assets` retries). Do not publicly host them. Missing files fall back to placeholders.
 
 ## Needs verification
-Multiplayer challenge texts are filled in for 6 weapons (KG-7 Vulcan, Rezi 12, ISO Nightshade, FiNN LMG, MAR-9, Sang 9mm) in `INFO` in the data file; the other 29 show NEEDS VERIFICATION. Military level requirements are likewise only known for those 6. DLC filter is not implemented. Language switch has EN/RU for navigation and hero only. This project was written without network access and has NOT been installed, built or tested yet.
+Multiplayer challenge details are filled in for 6 weapons (KG-7 Vulcan, Rezi 12, ISO Nightshade, FiNN LMG, MAR-9, Sang 9mm) in `INFO` in `src/data/mw4-weapons.ts`; other weapons simply show no details until you add them. DLC filter is not implemented. Language switch has EN/RU for navigation and hero only.

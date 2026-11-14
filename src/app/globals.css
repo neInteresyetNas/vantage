@@ -1,6 +1,15 @@
 @tailwind base;@tailwind components;@tailwind utilities;
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:radial-gradient(900px 420px at 88% -6%,#f5b81c18,transparent),radial-gradient(700px 380px at -5% 30%,#4f6bff10,transparent),#0b0b0c;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+::selection{background:#f5b81c;color:#111}
+*{scrollbar-width:thin;scrollbar-color:#3a3a42 transparent}
+:focus-visible{outline:2px solid #f5b81c;outline-offset:2px}
+@keyframes drift{50%{transform:translate(24px,-16px) scale(1.08)}}
+@keyframes glow{50%{box-shadow:0 0 0 1px #ff5a4d,0 0 64px #ff5a4d88}}
+.blob{animation:drift 9s ease-in-out infinite}.glow{animation:glow 2.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 [data-theme=light] body{background:#f4f4f5!important;color:#18181b!important}
 [data-theme=light] .bg-zinc-900{background:#fff}[data-theme=light] .bg-zinc-800,[data-theme=light] .bg-zinc-800\/60{background:#e4e4e7}
 [data-theme=light] .border-zinc-800,[data-theme=light] .border-zinc-700{border-color:#d4d4d8}
 [data-theme=light] .text-zinc-100{color:#18181b}[data-theme=light] .text-zinc-400,[data-theme=light] .text-zinc-500{color:#52525b}
+[data-theme=light] header{background:#ffffffcc!important}

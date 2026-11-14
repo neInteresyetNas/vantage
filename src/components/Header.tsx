@@ -11,8 +11,8 @@ export function Header() {
   useEffect(() => { const u = () => setOnline(navigator.onLine); u(); addEventListener('online', u); addEventListener('offline', u); return () => { removeEventListener('online', u); removeEventListener('offline', u); }; }, []);
   useEffect(() => setOpen(false), [path]);
   const links: [string, Parameters<typeof t>[0]][] = [['/', 'home'], ['/tracker', 'tracker'], ['/statistics', 'stats'], ['/about', 'about'], ['/login', 'account']];
-  return <><header className="flex items-center gap-2 border-b border-zinc-800 px-4 py-1">
-    <b className="mr-2 tracking-[.18em] text-amber-400">VANTAGE</b>
+  return <><header className="sticky top-0 z-30 flex items-center gap-2 border-b border-zinc-800 bg-[#0b0b0c]/80 px-4 py-1 pt-[env(safe-area-inset-top)] backdrop-blur-md">
+    <Link href="/" className="mr-2 flex items-center gap-2 font-black tracking-[.2em] text-amber-400"><span className="grid h-7 w-7 place-items-center rounded-md bg-amber-400 text-sm text-black">V</span>VANTAGE</Link>
     <nav className={`${open ? 'flex' : 'hidden'} absolute left-0 top-12 z-30 w-full flex-col border-b border-zinc-800 bg-zinc-900 p-2 md:static md:flex md:w-auto md:flex-row md:border-0 md:bg-transparent md:p-0`}>
       {links.map(([h, k]) => <Link key={h} href={h} className={`px-3 py-3 text-xs font-bold ${path === h ? 'text-amber-400' : 'text-zinc-400 hover:text-amber-400'}`}>{t(k)}</Link>)}</nav>
     <div className="ml-auto flex items-center gap-1">

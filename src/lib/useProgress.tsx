@@ -15,7 +15,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [sync, setSync] = useState<Sync>('local');
-  const synced = useRef(false), timer = useRef<ReturnType<typeof setTimeout>>();
+  const synced = useRef(false), timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => { try { set(clean(JSON.parse(localStorage.getItem(KEY) || '{}'))); } catch {} setReady(true); }, []);
   useEffect(() => { if (ready) try { localStorage.setItem(KEY, JSON.stringify(progress)); } catch {} }, [progress, ready]);
   useEffect(() => {

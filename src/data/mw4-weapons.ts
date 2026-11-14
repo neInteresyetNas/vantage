@@ -12,7 +12,7 @@ export const CLASSES = Object.keys(RAW);
 export const WEAPONS: Weapon[] = Object.entries(RAW).flatMap(([cls, l]) =>
   l.map((name) => ({ id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-'), name, cls })));
 export const IDS = WEAPONS.map((w) => w.id);
-// Multiplayer challenge data. Only weapons listed here are filled in; others show NEEDS VERIFICATION.
+// Multiplayer challenge data. Only weapons listed here have challenge details; others show no details.
 // sp = [icon slug (public/camos/<slug>.webp), name, challenge]
 type Info = { lv: number[]; sp: [string, string, string][]; plat: string; hb: string };
 export const GOLD_TEXT = 'Get 15 Player Kills in a single match';
@@ -24,8 +24,7 @@ export const INFO: Record<string, Info> = {
   'mar-9': { lv: [10,19,29,38,45,52,58,69], sp: [['mangrove','Mangrove','Get 20 Mounted Kills against Players'],['fungalgrid','Fungal Grid','Get 25 Player Kills while Crouched'],['white','White','Get 30 Longshot Kills against Players']], plat: 'Get 75 Player Kills while Prone', hb: 'Get 75 One Shot Kills against Players' },
   'sang-9mm': { lv: [9,13,17,21,25,28,31,35], sp: [['autumn','Autumn','Get 25 Player Kills while Aiming Down Sights'],['snakeskin','Snakeskin','Get 3 Player Kills without dying 5 times'],['spacetime','Space Time','Get 50 Player Kills while using Akimbo']], plat: 'Get 20 Player Kills from Behind', hb: 'Get 40 Hipfire Kills against Players' },
 };
-const NV = 'Challenge text: NEEDS VERIFICATION';
 export const camoRows = (id: string) => { const f = INFO[id]; return Array.from({ length: 11 }, (_, i) => i < 8
-  ? { name: `Military ${i + 1}`, key: `military-${i + 1}`, text: f ? `Reach Weapon Level ${f.lv[i]}` : NV }
-  : { name: f?.sp[i - 8][1] ?? `Special ${i - 7}`, key: f?.sp[i - 8][0] ?? `special-${i - 7}`, text: f?.sp[i - 8][2] ?? NV }); };
-export const masteryText = (id: string) => ({ gold: GOLD_TEXT, plat: INFO[id]?.plat ?? NV, hb: INFO[id]?.hb ?? NV });
+  ? { name: `Military ${i + 1}`, key: `military-${i + 1}`, text: f ? `Reach Weapon Level ${f.lv[i]}` : undefined }
+  : { name: f?.sp[i - 8][1] ?? `Special ${i - 7}`, key: f?.sp[i - 8][0] ?? `special-${i - 7}`, text: f?.sp[i - 8][2] }); };
+export const masteryText = (id: string) => ({ gold: GOLD_TEXT, plat: INFO[id]?.plat, hb: INFO[id]?.hb });
