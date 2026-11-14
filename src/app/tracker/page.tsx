@@ -6,7 +6,7 @@ import { WeaponModal } from '@/components/WeaponModal';
 import { Bar } from '@/components/Bar';
 import { WeaponImg } from '@/components/CamoImage';
 import { useProgress } from '@/lib/useProgress';
-import { count, nextStep, norm, pct, status, STEPS } from '@/lib/progress';
+import { count, done, nextStep, norm, pct, status, STEPS } from '@/lib/progress';
 import { CLASSES, WEAPONS } from '@/data/mw4-weapons';
 const F0 = { q: '', c: 'All', s: 'All', o: 'alpha' };
 export default function Tracker() {
@@ -31,6 +31,6 @@ export default function Tracker() {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">{list.map((x) => { const s = norm(progress[x.id]); return (
         <motion.button layout initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} whileHover={{ y: -3 }} key={x.id} onClick={() => setOpen(x.id)} className="rounded-2xl border border-zinc-800 bg-zinc-900 p-4 text-left hover:border-amber-400">
           <WeaponImg id={x.id} /><div className="flex items-center justify-between gap-2"><b>{x.name}</b><span className="text-[10px] font-bold tracking-wider text-amber-400">{status(s).toUpperCase()}</span></div>
-          <p className="text-xs text-zinc-400">{x.cls} · {count(s)}/11 camos · {STEPS - (count(s) + s.p + s.h)} left</p><p className="mt-2 text-sm"><b>{pct(s)}%</b> <span className="text-xs text-zinc-400">Next: {nextStep(s)}</span></p><Bar p={pct(s)} /></motion.button>); })}</div>}
+          <p className="text-xs text-zinc-400">{x.cls} · {count(s)}/11 camos · {STEPS - done(s)} left</p><p className="mt-2 text-sm"><b>{pct(s)}%</b> <span className="text-xs text-zinc-400">Next: {nextStep(s)}</span></p><Bar p={pct(s)} /></motion.button>); })}</div>}
     {w && <WeaponModal w={w} onClose={() => setOpen(null)} />}</div>;
 }
